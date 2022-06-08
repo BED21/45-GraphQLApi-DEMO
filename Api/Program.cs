@@ -5,7 +5,9 @@ builder.Services
     .AddSingleton<Repository>()
     .AddGraphQLServer()
     .AddQueryType<Query>()
-    .AddMutationType<Mutation>();
+    .AddMutationType<Mutation>()
+
+    .UseField<DomainExceptionMiddleware>();
 
 
 

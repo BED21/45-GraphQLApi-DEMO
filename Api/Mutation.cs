@@ -11,7 +11,7 @@ public class Mutation
     public async Task<BookPayload> AddBook(BookInput input, [Service]Repository repository)
     {
         var author = await repository.GetAuthor(input.author) ??
-                        throw new Exception("Author not found");
+                        throw new AuthorNotFoundException("Author not found");
         var book = new Book(Guid.NewGuid(), input.title, author);
         await repository.AddBook(book);
         return new BookPayload(book);
@@ -23,4 +23,5 @@ public class Mutation
     public record AuthorInput(string name);
     public record BookPayload(Book? record, string? error = null);
     public record BookInput(string title, Guid author);
+    public record Payload(string? Error);
 }
