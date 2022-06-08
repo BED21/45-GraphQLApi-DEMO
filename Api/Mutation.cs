@@ -19,7 +19,7 @@ public class Mutation
 
 
 
-    public record AuthorPayload(Author record);
+    public record AuthorPayload(Author record, string? error = null);
     public record AuthorInput(string name);
     public record BookPayload(Book? record, string? error = null);
     public record BookInput(string title, Guid author);
